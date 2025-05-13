@@ -1,29 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Accueil – Ressources ITIL 4 – STUdi</title>
-  <meta http-equiv="refresh" content="5;url=fiches_ITIL4/sommaire.html">
+  <title>Ressources de Formation TAI - STUDI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { background: #f0f4f8; font-family: Arial, sans-serif; text-align: center; padding: 3rem; }
-    .container { max-width: 700px; margin: auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    h1 { color: #2c3e50; font-size: 1.8rem; }
+    body { background: #f0f4f8; font-family: Arial, sans-serif; padding: 3rem; }
+    .container { max-width: 900px; margin: auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1 { color: #2c3e50; font-size: 1.8rem; text-align: center; }
+    h2 { color: #2980b9; margin-top: 2rem; }
     p { color: #34495e; line-height: 1.6; }
-    .loading { font-size: 0.9rem; color: #7f8c8d; margin-top: 2rem; }
-    a { color: #2980b9; font-weight: bold; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    .sections { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .section-card { background: #f4f6f9; border-radius: 8px; padding: 1.5rem; transition: transform 0.3s; border-left: 5px solid #2980b9; }
+    .section-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .section-title { font-size: 1.2rem; color: #2c3e50; margin: 0 0 0.5rem 0; }
+    .section-description { font-size: 0.9rem; color: #7f8c8d; margin-bottom: 1rem; }
+    .btn { display: inline-block; background: #2980b9; color: white; padding: 0.5rem 1rem; text-decoration: none; border-radius: 4px; font-weight: bold; transition: background 0.3s; }
+    .btn:hover { background: #1f618d; }
+    .footer { text-align: center; margin-top: 3rem; font-size: 0.9rem; color: #7f8c8d; }
+    .repo-link { margin-top: 1rem; text-align: center; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Bienvenue sur le portail de ressources ITIL 4</h1>
-    <p>Ce site a été conçu dans le cadre de la formation <strong>Technicien d’assistance en informatique</strong> suivie par Guillaume sur la plateforme <strong>STUDI</strong>.</p>
-    <p>Vous y trouverez des fiches de synthèse, un quiz interactif, des mémos visuels et des résumés SAAC pour mieux comprendre et mémoriser les fondamentaux d’ITIL 4.</p>
-    <p>📘 Ce dépôt GitHub est un support personnel de consolidation de compétences pour les blocs de certification liés à la gestion des services IT.</p>
-    <p class="loading">⏳ Redirection automatique vers le sommaire dans quelques secondes...<br>
-    Sinon, cliquez ici : <a href="fiches_ITIL4/index.html">Accéder au sommaire</a></p>
+    <h1>Mes Ressources de Formation TAI - STUDI</h1>
+    <p>Bienvenue dans ce dépôt contenant mes supports de révision pour la formation <strong>Technicien d'Assistance Informatique</strong> chez STUDI. Vous trouverez ici différentes ressources organisées par thématique pour faciliter mes révisions et renforcer mes compétences.</p>
+    
+    <div class="repo-link">
+      <a href="https://github.com/sirensnake/STUDI" target="_blank" class="btn">Voir le code source sur GitHub</a>
+    </div>
+    
+    <h2>Sections disponibles</h2>
+    <div class="sections">
+      <div class="section-card">
+        <h3 class="section-title">📘 ITIL 4 - Gestion des services IT</h3>
+        <p class="section-description">Fiches mémo, quiz et résumés sur le référentiel ITIL 4 Foundation</p>
+        <a href="fiches_ITIL4/sommaire.html" class="btn">Accéder</a>
+      </div>
+      
+      <!-- Sections futures à ajouter ici -->
+      <div class="section-card" style="opacity: 0.6;">
+        <h3 class="section-title">🔧 Infrastructure réseau</h3>
+        <p class="section-description">Prochainement : Fiches sur les fondamentaux des réseaux</p>
+        <a href="#" class="btn" style="background-color: #95a5a6;">À venir</a>
+      </div>
+      
+      <div class="section-card" style="opacity: 0.6;">
+        <h3 class="section-title">🔐 Cybersécurité</h3>
+        <p class="section-description">Prochainement : Bases de la sécurité informatique</p>
+        <a href="#" class="btn" style="background-color: #95a5a6;">À venir</a>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>Créé par Guillaume dans le cadre de ma reconversion professionnelle | Formation TAI - STUDI © 2025</p>
+    </div>
   </div>
 </body>
 </html>

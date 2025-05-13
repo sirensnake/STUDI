@@ -4,183 +4,66 @@
   <meta charset="UTF-8">
   <title>Examen Blanc ITIL 4 – 20 questions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial, sans-serif; background: #f4f6f9; padding: 2rem; }
-    .container { max-width: 900px; margin: auto; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    h1 { color: #2c3e50; text-align: center; margin-bottom: 2rem; }
-    .question { margin-bottom: 2rem; }
-    .question h2 { font-size: 1.1rem; color: #1a5276; margin-bottom: 0.5rem; }
-    label { display: block; margin: 0.4rem 0; }
-    button { margin-top: 1.5rem; background: #2980b9; color: white; padding: 0.6rem 1.4rem; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-    button:hover { background: #1f618d; }
-    .feedback { margin-top: 0.3rem; font-weight: bold; }
-    .correct { color: green; }
-    .incorrect { color: red; }
-    .score { text-align: center; font-size: 1.3rem; margin-top: 2rem; font-weight: bold; }
-    .back-link { text-align: center; margin-top: 3rem; }
-    .back-link a { background: #2980b9; color: white; padding: 0.6rem 1.2rem; border-radius: 5px; text-decoration: none; font-weight: bold; transition: background 0.3s ease; }
-    .back-link a:hover { background: #1f618d; }
-    #explications { margin-top: 2rem; background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #2980b9; }
-    #explanationList li { margin-bottom: 0.8rem; }
-    /* Styles pour la barre de progression */
-    .progress-container { width: 100%; background-color: #e0e0e0; border-radius: 10px; margin: 20px 0; }
-    .progress-bar { height: 20px; background: linear-gradient(90deg, #2ecc71, #27ae60); border-radius: 10px; width: 0%; transition: width 1s ease-in-out; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 0.8rem; }
-    /* Style pour les options de questions */
-    .options-container { display: flex; flex-direction: column; margin-left: 20px; }
-    /* Animation pour les bonnes réponses */
-    @keyframes correctAnswer { 
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    .correct-animation { animation: correctAnswer 0.5s ease; }
-  </style>
+  <meta name="description" content="Quiz interactif pour tester vos connaissances sur ITIL 4 avec 20 questions et feedback immédiat.">
+  <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
   <div class="container">
-    <h1>🎓 Examen Blanc ITIL 4 – 20 questions</h1>
-    <form id="quizForm"></form>
-    <div style="text-align:center;">
-      <button type="button" onclick="corrigerQuiz()">✅ Valider mes réponses</button>
+    <div class="header">
+      <h1>🎓 Examen Blanc ITIL 4 – 20 questions</h1>
     </div>
     
-    <!-- Ajout d'un élément pour afficher le score -->
+    <div class="nav">
+      <a href="../index.html" class="nav-link">Sommaire</a>
+      <a href="../fiches/fiche_pratique_incident.html" class="nav-link">Gestion des incidents</a>
+      <a href="../fiches/fiche_memo_debutant.html" class="nav-link">Mémo ITIL</a>
+    </div>
+    
+    <!-- Nouveau: Contrôles du quiz -->
+    <div class="quiz-controls" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1rem;">
+      <button type="button" id="btnMelanger" class="nav-link">🔄 Mélanger les questions</button>
+      <button type="button" id="btnTimer" class="nav-link">⏱️ Démarrer le timer (10min)</button>
+    </div>
+    
+    <!-- Nouveau: Affichage du timer -->
+    <div id="timer" style="text-align: center; font-size: 1.2rem; margin: 1rem 0; display: none;">
+      ⏱️ Temps restant: 10:00
+    </div>
+    
+    <form id="quizForm">
+      <!-- Le JavaScript va générer les questions ici -->
+    </form>
+    
+    <div style="text-align:center; margin-top: 2rem;">
+      <button type="button" onclick="corrigerQuiz()" class="nav-link">✅ Valider mes réponses</button>
+    </div>
+    
+    <!-- Éléments pour afficher le score -->
     <div id="score" class="score"></div>
     
-    <!-- Ajout de la barre de progression -->
+    <!-- Barre de progression -->
     <div class="progress-container" style="display:none;" id="progress-container">
       <div class="progress-bar" id="progress-bar">0%</div>
     </div>
     
-    <!-- Ajout d'une section pour les explications -->
+    <!-- Section pour les explications -->
     <div id="explications" style="display:none;">
       <h2>📚 Explications des réponses :</h2>
       <ul id="explanationList"></ul>
     </div>
     
-    <div class="back-link">
-      <a href="index.html">⬅ Retour au sommaire</a>
+    <!-- Nouveau: Section pour l'historique des scores -->
+    <div id="historique" style="display:none; margin-top: 2rem; background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #2980b9;">
+      <h2>📊 Historique de vos scores</h2>
+      <ul id="historiqueList"></ul>
+    </div>
+    
+    <div class="footer">
+      <p>Contenu créé dans le cadre de la formation TAI - STUDI</p>
+      <a href="../index.html" class="nav-link">Sommaire</a>
     </div>
   </div>
-  <script>
-    const questions = [
-      { q: "Que signifie ITIL ?", r: "b", c: ["International Technology Infrastructure Language", "Information Technology Infrastructure Library", "Internet Transport Integration Layer"] },
-      { q: "Quel est le but principal d'un service IT selon ITIL ?", r: "b", c: ["Fournir des équipements", "Créer de la valeur sans que l'utilisateur gère les coûts/risques", "Vendre des produits"] },
-      { q: "Combien de dimensions identifie ITIL 4 ?", r: "b", c: ["3", "4", "5"] },
-      { q: "Laquelle est une pratique ITIL ?", r: "b", c: ["Gestion des émotions", "Gestion des incidents", "Gestion des congés"] },
-      { q: "Quel est le rôle du Service Desk ?", r: "c", c: ["Gérer les ventes", "Gérer le personnel", "Point de contact unique pour les utilisateurs"] },
-      { q: "La chaîne de valeur ITIL commence par :", r: "a", c: ["Planifier", "Construire", "Engager"] },
-      { q: "ITIL considère que la valeur est :", r: "c", c: ["Créée par le fournisseur seul", "Indépendante des résultats", "Co-créée avec le client"] },
-      { q: "Une interruption de service est appelée :", r: "a", c: ["Incident", "Problème", "Erreur"] },
-      { q: "Le modèle d'amélioration continue comporte :", r: "b", c: ["3 étapes", "7 étapes", "9 étapes"] },
-      { q: "Un problème est :", r: "c", c: ["Un changement", "Un bug logiciel", "La cause racine d'un ou plusieurs incidents"] },
-      { q: "La dimension 'Flux de valeur & processus' concerne :", r: "a", c: ["Les activités coordonnées", "Le matériel utilisé", "Les contrats fournisseurs"] },
-      { q: "Combien de pratiques ITIL sont listées dans ITIL 4 ?", r: "c", c: ["12", "21", "34"] },
-      { q: "L'objectif de la gestion des changements est :", r: "b", c: ["Bloquer tout changement", "Maximiser la réussite des changements", "Éviter les changements"] },
-      { q: "Le système de valeur des services (SVS) comprend :", r: "a", c: ["Chaîne de valeur, principes, pratiques, gouvernance", "Réseaux et systèmes", "Plans de formation"] },
-      { q: "L'activité ITIL 'Engage' signifie :", r: "c", c: ["Analyser les performances", "Livrer les services", "Interagir avec les parties prenantes"] },
-      { q: "Quel principe guide recommande de réutiliser ce qui fonctionne ?", r: "a", c: ["Commencer là où vous êtes", "Progresser par itération", "Penser et travailler de manière holistique"] },
-      { q: "Un produit ITIL comprend :", r: "b", c: ["Un serveur uniquement", "Ressources configurées pour créer de la valeur", "Un contrat"] },
-      { q: "Une demande de service est :", r: "c", c: ["Un incident", "Un problème", "Une requête utilisateur standard"] },
-      { q: "Laquelle n'est PAS une des 4 dimensions ?", r: "a", c: ["Dimension stratégique", "Information & technologie", "Partenaires & fournisseurs"] },
-      { q: "Un exemple de flux de valeur est :", r: "c", c: ["Un rôle métier", "Un type de contrat", "Le traitement d'une demande utilisateur"] }
-    ];
-
-    function corrigerQuiz() {
-      const explanations = [
-        "ITIL signifie Information Technology Infrastructure Library.",
-        "Un service IT vise à créer de la valeur sans que le client gère les coûts/risques.",
-        "ITIL 4 repose sur 4 dimensions fondamentales.",
-        "La gestion des incidents est une pratique ITIL essentielle.",
-        "Le Service Desk est le point de contact unique entre IT et utilisateurs.",
-        "L'activité initiale de la chaîne de valeur est « Planifier ».",
-        "La valeur est co-créée avec le client.",
-        "Une interruption est un incident.",
-        "Le modèle d'amélioration continue comporte 7 étapes.",
-        "Un problème est la cause racine d'un ou plusieurs incidents.",
-        "La dimension « flux de valeur & processus » traite des activités coordonnées.",
-        "ITIL 4 recense 34 pratiques.",
-        "La gestion des changements maximise la réussite des changements.",
-        "Le SVS regroupe chaîne de valeur, principes, pratiques, gouvernance.",
-        "« Engage » signifie interagir avec les parties prenantes.",
-        "Le principe « Commencer là où vous êtes » recommande la réutilisation.",
-        "Un produit ITIL est une ressource configurée pour créer de la valeur.",
-        "Une demande de service est une requête standard.",
-        "Il n'existe pas de dimension « stratégique » dans ITIL 4.",
-        "Le traitement d'une demande utilisateur est un exemple de flux de valeur."
-      ];
-
-      let score = 0;
-      
-      
-      // Parcourir chaque question et vérifier la réponse
-      questions.forEach((q, i) => {
-        const id = i + 1;
-        const selected = document.querySelector(`input[name=q${id}]:checked`);
-        const feedback = document.getElementById(`f${id}`);
-        const questionDiv = document.querySelector(`.question:nth-child(${id})`);
-        
-        if (selected && selected.value === q.r) {
-          feedback.innerHTML = '<span class="correct">✅ Bonne réponse</span>';
-          // Ajouter une animation pour les bonnes réponses
-          questionDiv.classList.add('correct-animation');
-          score++;
-        } else {
-          feedback.innerHTML = '<span class="incorrect">❌ Mauvaise réponse</span>';
-          // Ajouter l'indication de la bonne réponse
-          const correctAnswerIndex = q.r.charCodeAt(0) - 97;
-          feedback.innerHTML += `<span style="display:block;margin-top:5px;">La bonne réponse était : ${q.c[correctAnswerIndex]}</span>`;
-        }
-      });
-      
-      // Afficher le score final
-      document.getElementById("score").innerHTML = `🎯 Score final : ${score}/20`;
-      
-      // Mettre à jour et afficher la barre de progression
-      const progressContainer = document.getElementById("progress-container");
-      const progressBar = document.getElementById("progress-bar");
-      const progressPercentage = Math.round((score / 20) * 100);
-      
-      progressContainer.style.display = "block";
-      progressBar.style.width = `${progressPercentage}%`;
-      progressBar.textContent = `${progressPercentage}%`;
-      
-      // Définir la couleur de la barre en fonction du score
-      if (progressPercentage < 50) {
-        progressBar.style.background = "linear-gradient(90deg, #e74c3c, #c0392b)";
-      } else if (progressPercentage < 75) {
-        progressBar.style.background = "linear-gradient(90deg, #f39c12, #d35400)";
-      } else {
-        progressBar.style.background = "linear-gradient(90deg, #2ecc71, #27ae60)";
-      }
-      
-      // Générer les explications
-      const list = document.getElementById("explanationList");
-      list.innerHTML = ""; // Vider la liste avant d'ajouter les nouvelles explications
-      
-      explanations.forEach((exp, i) => {
-        const li = document.createElement("li");
-        li.innerHTML = `<strong>Q${i+1}:</strong> ${exp}`;
-        list.appendChild(li);
-      });
-      
-      // Afficher la section des explications
-      document.getElementById("explications").style.display = "block";
-    }
-
-    // Générer les questions dans le formulaire
-    const form = document.getElementById("quizForm");
-    questions.forEach((q, i) => {
-      const id = i + 1;
-      let html = `<div class="question">
-        <h2>${id}. ${q.q}</h2>`;
-      q.c.forEach((c, j) => {
-        html += `<label><input type="radio" name="q${id}" value="${String.fromCharCode(97 + j)}"> ${c}</label>`;
-      });
-      html += `<div class="feedback" id="f${id}"></div>
-      </div>`;
-      form.innerHTML += html;
-    });
-  </script>
+  
+  <script src="../assets/js/quiz.js"></script>
 </body>
 </html>

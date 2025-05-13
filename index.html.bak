@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil – Ressources ITIL 4 – STUdi</title>
+  <meta http-equiv="refresh" content="5;url=fiches_ITIL4/sommaire.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { background: #f0f4f8; font-family: Arial, sans-serif; text-align: center; padding: 3rem; }
+    .container { max-width: 700px; margin: auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1 { color: #2c3e50; font-size: 1.8rem; }
+    p { color: #34495e; line-height: 1.6; }
+    .loading { font-size: 0.9rem; color: #7f8c8d; margin-top: 2rem; }
+    a { color: #2980b9; font-weight: bold; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenue sur le portail de ressources ITIL 4</h1>
+    <p>Ce site a été conçu dans le cadre de la formation <strong>Technicien d’assistance en informatique</strong> suivie par Guillaume sur la plateforme <strong>STUDI</strong>.</p>
+    <p>Vous y trouverez des fiches de synthèse, un quiz interactif, des mémos visuels et des résumés SAAC pour mieux comprendre et mémoriser les fondamentaux d’ITIL 4.</p>
+    <p>📘 Ce dépôt GitHub est un support personnel de consolidation de compétences pour les blocs de certification liés à la gestion des services IT.</p>
+    <p class="loading">⏳ Redirection automatique vers le sommaire dans quelques secondes...<br>
+    Sinon, cliquez ici : <a href="fiches_ITIL4/index.html">Accéder au sommaire</a></p>
+  </div>
+</body>
+</html>

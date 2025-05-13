@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,6 +8,9 @@
     body { font-family: sans-serif; background: #ecf0f1; padding: 2rem; margin: 0; }
     .container { max-width: 960px; margin: auto; background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
     h1 { color: #2c3e50; margin-bottom: 1.5rem; text-align: center; font-size: 1.8rem; }
+    .nav { display: flex; gap: 0.8rem; justify-content: center; margin: 1.5rem 0; flex-wrap: wrap; }
+    .nav-link { background: #2980b9; color: white; padding: 0.6rem 1rem; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s; }
+    .nav-link:hover { background: #1f618d; }
     ul { list-style: none; padding-left: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     li { background: #f4f6f9; border-left: 5px solid #2980b9; padding: 1rem; border-radius: 6px; transition: background 0.3s ease; display: flex; gap: 1rem; align-items: flex-start; }
     li:hover { background: #d6eaf8; }
@@ -19,6 +21,7 @@
     .footer-link { text-align: center; margin-top: 2rem; font-size: 1rem; }
     .footer-link a { color: #21618c; text-decoration: none; font-weight: bold; }
     .footer-link a:hover { text-decoration: underline; }
+    .footer { text-align: center; margin-top: 3rem; font-size: 0.9rem; color: #7f8c8d; }
     @media (max-width: 768px) {
       ul { grid-template-columns: 1fr; }
       .container { padding: 1rem; }
@@ -28,6 +31,17 @@
 <body>
   <div class="container">
     <h1>📚 Sommaire des Fiches ITIL 4</h1>
+    
+    <div class="nav">
+      <a href="../index.html" class="nav-link">← Accueil principal</a>
+      <a href="#" class="nav-link" style="background-color: #1f618d;">Sommaire ITIL</a>
+    </div>
+    
+    <p style="text-align: center; margin-bottom: 2rem;">
+      Bienvenue dans cette section dédiée à ITIL 4. Vous trouverez ici différentes ressources pour mieux comprendre 
+      et mémoriser les concepts fondamentaux de la gestion des services IT selon le référentiel ITIL 4 Foundation.
+    </p>
+    
     <ul>
       <li>
         <img src="https://cdn-icons-png.flaticon.com/512/2920/2920069.png" alt="Incident">
@@ -64,9 +78,21 @@
           <span>Testez vos connaissances avec 20 questions dynamiques</span>
         </div>
       </li>
+      <li>
+        <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="PDF">
+        <div class="info">
+          <a href="ITILFoundation-ITIL4Edition.pdf" target="_blank">Document officiel ITIL 4</a>
+          <span>ITIL® Foundation 4e édition (PDF)</span>
+        </div>
+      </li>
     </ul>
-    <div class="footer-link">
-      📄 Lire le document officiel : <a href="ITILFoundation-ITIL4Edition.pdf" target="_blank">ITIL® Foundation 4e édition (PDF)</a>
+    
+    <div class="footer">
+      <p>Contenu créé par Guillaume dans le cadre de la formation Technicien d'Assistance Informatique - STUDI © 2025</p>
+      <div class="nav" style="margin-top: 1rem; justify-content: center;">
+        <a href="../index.html" class="nav-link">Accueil principal</a>
+        <a href="https://github.com/sirensnake/STUDI" target="_blank" class="nav-link">GitHub</a>
+      </div>
     </div>
   </div>
 </body>

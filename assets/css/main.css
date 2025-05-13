@@ -1,0 +1,156 @@
+/* assets/css/main.css */
+
+/* Variables globales */
+:root {
+    --primary-color: #2980b9;
+    --secondary-color: #2c3e50;
+    --light-bg: #f4f6f9;
+    --white: #ffffff;
+    --shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Styles de base */
+  body {
+    font-family: Arial, sans-serif;
+    background: var(--light-bg);
+    padding: 2rem;
+    margin: 0;
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: auto;
+    background: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+  }
+  
+  /* En-tête commun */
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .header h1 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Navigation commune */
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .nav-link {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    background: #1f618d;
+  }
+  
+  /* Grille pour le sommaire */
+  .grid-container {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+  
+  .grid-item {
+    background: #f4f6f9;
+    border-left: 5px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .grid-item:hover {
+    background: #d6eaf8;
+  }
+  
+  /* Pied de page commun */
+  .footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  /* Styles pour le quiz */
+  .question {
+    margin-bottom: 2rem;
+  }
+  
+  .question h2 {
+    font-size: 1.1rem;
+    color: #1a5276;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feedback {
+    margin-top: 0.3rem;
+    font-weight: bold;
+  }
+  
+  .correct {
+    color: green;
+  }
+  
+  .incorrect {
+    color: red;
+  }
+  
+  .score {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    font-weight: bold;
+  }
+  
+  .progress-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+  
+  .progress-bar {
+    height: 20px;
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    border-radius: 10px;
+    width: 0%;
+    transition: width 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+  
+  /* Media queries pour la responsivité */
+  @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .container {
+      padding: 1rem;
+    }
+  }
